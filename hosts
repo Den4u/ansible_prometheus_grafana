@@ -1,0 +1,2 @@
+[my_server]
+test_drive ansible_host=your_ip_host ansible_user=ansible_user

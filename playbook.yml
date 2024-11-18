@@ -1,0 +1,49 @@
+---
+- name: nginx
+  hosts: my_server
+  become: True
+  roles:
+    - nginx
+
+- name: docker&docker compose
+  hosts: my_server
+  become: True
+  roles:
+    - docker_docker_compose
+    
+- name: pip&venv
+  hosts: my_server
+  become: True
+  roles:
+    - pip_venv
+
+- name: prometheus
+  hosts: my_server
+  become: True
+  roles:
+    - prometheus
+
+- name: node_exporter
+  hosts: my_server
+  become: True
+  roles:
+    - prometheus_node_exporter
+
+- name: blackbox_exporter
+  hosts: my_server
+  become: True
+  roles:
+    - blackbox_exporter
+
+- name: Grafana
+  hosts: my_server
+  become: True
+  roles:
+    - grafana
+
+- name: alertmanager
+  hosts: my_server
+  become: True
+  roles:
+    - alertmanager
+

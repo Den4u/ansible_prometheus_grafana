@@ -1,0 +1,11 @@
+- name: install curl
+  apt: name=curl update_cache=yes
+
+- name: download script for install docker from official site
+  command: curl -fSL https://get.docker.com -o get-docker.sh
+
+- name: run script
+  command: sudo sh ./get-docker.sh
+
+- name: install docker compose
+  apt: name=docker-compose-plugin update_cache=yes

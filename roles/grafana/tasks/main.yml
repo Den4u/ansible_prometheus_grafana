@@ -1,0 +1,29 @@
+- name: Copy Grafana file to bin
+  copy:
+    # ваш путь к grafana-enterprise_10.2.0_amd64.deb
+    src: "/your_path_to/grafana-enterprise_10.2.0_amd64.deb"
+    dest: "/tmp/"
+
+- name: Install Grafana
+  shell: |
+    cd /tmp/ &&
+    sudo apt-get install -y adduser libfontconfig1 musl &&
+    sudo dpkg -i grafana-enterprise_10.2.0_amd64.deb
+    sudo ufw allow 3000/tcp
+
+- name: Delete Grafana tmp folder
+  file:
+    path: '/tmp/grafana-enterprise_10.2.0_amd64.deb'
+    state: absent
+
+- name: "Grafana server started"
+  service:
+    name: grafana-server
+    enabled: true
+    state: started
+
+- name: "Check if Grafana is accessible."
+  uri:
+    url: http://your_ip:3000
+    method: GET
+    status_code: 200

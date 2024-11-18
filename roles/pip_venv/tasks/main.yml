@@ -1,0 +1,5 @@
+- name: install pip 
+  apt: name=python3-pip update_cache=yes
+- name: install venv
+  apt: name=python3-venv update_cache=yes
+
